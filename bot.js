@@ -1,5 +1,5 @@
-import TelegramBot from "node-telegram-bot-api";
 import "dotenv/config";
+import TelegramBot from "node-telegram-bot-api";
 import { getData, deleteData, storeData, updateData } from "./function.js";
 
 const bot = new TelegramBot(process.env.BOT_TOKEN, { polling: true });
