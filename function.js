@@ -1,6 +1,9 @@
 import axios from "axios";
+import TelegramBot from "node-telegram-bot-api";
 
-const API_URL = "http://localhost:3333/user";
+const bot = new TelegramBot(process.env.BOT_TOKEN, { polling: true });
+
+const API_URL = "http://localhost:3000/user";
 
 const sendMsg = (chatId, msg) => {
   bot.sendMessage(chatId, msg);
