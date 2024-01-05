@@ -1,7 +1,5 @@
 import axios from "axios";
-import TelegramBot from "node-telegram-bot-api";
-
-const bot = new TelegramBot(process.env.BOT_TOKEN, { polling: true });
+import { bot } from "./bot";
 
 const API_URL = "http://localhost:3000/user";
 
@@ -13,13 +11,11 @@ export const getData = async (chatId) => {
   let msg = "";
   try {
     const res = await axios.get(API_URL);
-    console.log(res.data.data);
     msg = "Daftar Pengguna :\n";
     res.data.data.map((v) => {
       msg += `- (ID ${v.id}) ${v.name} ${v.age} tahun\n`;
     });
   } catch (error) {
-    console.log(error);
     msg = "Error get data";
   }
   sendMsg(chatId, msg);
